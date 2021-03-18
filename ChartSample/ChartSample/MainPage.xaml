@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:syncfusion="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" xmlns:local="clr-namespace:ChartSample"
+             x:Class="ChartSample.MainPage">
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="Padding" Value="2,-10,2,-10"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="BackgroundColor" Value="#d11f5b"/>
+            <Setter Property="HeightRequest" Value="30"/>
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout Margin="30">
+        <syncfusion:SfChart BackgroundColor="#d11f5b"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <syncfusion:SfChart.PrimaryAxis>
+                <syncfusion:CategoryAxis LabelPlacement="BetweenTicks" ShowMajorGridLines="False">
+                    <syncfusion:CategoryAxis.MajorTickStyle>
+                        <syncfusion:ChartAxisTickStyle TickSize="0"/>
+                    </syncfusion:CategoryAxis.MajorTickStyle>
+                    <syncfusion:CategoryAxis.LabelStyle>
+                        <syncfusion:ChartAxisLabelStyle TextColor="White"/>
+                    </syncfusion:CategoryAxis.LabelStyle>
+                </syncfusion:CategoryAxis>
+            </syncfusion:SfChart.PrimaryAxis>
+            <syncfusion:SfChart.SecondaryAxis>
+                <syncfusion:NumericalAxis EdgeLabelsDrawingMode="Fit" ShowMinorGridLines="False" ShowMajorGridLines="False" >
+                    <syncfusion:NumericalAxis.MajorTickStyle>
+                        <syncfusion:ChartAxisTickStyle TickSize="0"/>
+                    </syncfusion:NumericalAxis.MajorTickStyle>
+                    <syncfusion:NumericalAxis.LabelStyle>
+                        <syncfusion:ChartAxisLabelStyle TextColor="White"/>
+                    </syncfusion:NumericalAxis.LabelStyle>
+                </syncfusion:NumericalAxis>
+            </syncfusion:SfChart.SecondaryAxis>
+            <syncfusion:ColumnSeries x:Name="series" EnableAnimation="True" AnimationDuration="0.8" Color="White" Spacing="0.3"  ItemsSource="{Binding Data}" XBindingPath="XValue" YBindingPath="YValue1"/>
+        </syncfusion:SfChart>
+        <Button Text="Add data point"  Clicked="Button_Clicked"/>
+    </StackLayout>
+
+</ContentPage>
